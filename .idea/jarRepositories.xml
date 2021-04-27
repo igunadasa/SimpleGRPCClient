@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RemoteRepositoriesConfiguration">
+    <remote-repository>
+      <option name="id" value="production" />
+      <option name="name" value="mtech-artifactory-primary-0-releases" />
+      <option name="url" value="https://mtech.jfrog.io/mtech/mtech-maven-production" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="Maven Central repository" />
+      <option name="url" value="https://repo1.maven.org/maven2" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="jboss.community" />
+      <option name="name" value="JBoss Community repository" />
+      <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="mtech jcenter remote" />
+      <option name="url" value="https://mtech.jfrog.io/mtech/list/jcenter-remote/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="snapshot" />
+      <option name="name" value="mtech-artifactory-primary-0-snapshots" />
+      <option name="url" value="https://mtech.jfrog.io/mtech/mtech-maven-snapshot" />
+    </remote-repository>
+  </component>
+</project>
