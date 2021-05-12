@@ -5,8 +5,7 @@ import io.grpc.ManagedChannelBuilder;
 import io.grpc.Metadata;
 import io.grpc.netty.shaded.io.grpc.netty.GrpcSslContexts;
 import io.grpc.netty.shaded.io.grpc.netty.NettyChannelBuilder;
-import mtech.work_orders_api.WorkOrders;
-import mtech.work_orders_api.WorkOrderServiceGrpc;
+import mtech.account_api.AccountOpenServiceGrpc;
 
 import javax.net.ssl.SSLException;
 import java.io.File;
@@ -19,23 +18,21 @@ public class SimpleGRPCClient {
                 Metadata.Key.of("content-type", Metadata.ASCII_STRING_MARSHALLER);
         header.put(key, "Text");
 
-        ManagedChannel channel = NettyChannelBuilder.forAddress("work-orders-v1.dev-v2.mrbuilder.io", 443)
-                .sslContext(GrpcSslContexts.forClient()
-                        .trustManager(new File(SimpleGRPCClient.class.getClassLoader().getResource("sca1b.crt").getFile()))
-                        .build())
+        ManagedChannel channel = NettyChannelBuilder.forAddress("accounts-v1.grpc.qa-v2.mrbuilder.io", 443)
+
                 .build();
 //        ManagedChannel channel = NettyCh.forTarget("https://work-orders-v1.dev-v2.mrbuilder.io")
 //                .useTransportSecurity()
 //                .build();
 
-        WorkOrderServiceGrpc.WorkOrderServiceBlockingStub stub =
-                WorkOrderServiceGrpc.newBlockingStub(channel);
+        AccountOpenServiceGrpc.AccountOpenServiceBlockingStub stub =
+                AccountOpenServiceGrpc.newBlockingStub(channel);
 
         stub = io.grpc.stub.MetadataUtils.attachHeaders(stub, header);
 
-        WorkOrders.ProInvoice helloResponse = stub.getInvoiceByID(StringValue.getDefaultInstance());
+       var list = stub.getInvoicingMethodList(Empty.newBuilder().build());
 
-        System.out.println(helloResponse);
+        System.out.println(list);
 
         channel.shutdown();
     }
